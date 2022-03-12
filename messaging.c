@@ -13,7 +13,11 @@ int read(char *buffer, unsigned int count){
     }
 
     printf("Enter an input: ");
-    scanf("%llx", input);
+    int valid = scanf(" %llx", input);
+    if(valid == 0){
+        getchar();// in case invalid character inputted (e.g. 'T' has no hex value) or ^D inputted to similate recieving no bytes, prevents scanf from being skipped
+        return valid;
+    }
 
     while(input[num]!= '\0'){
         num++;
@@ -30,5 +34,5 @@ void process_message(char *buffer, unsigned int message_id){
 }
 
 int get_message_size_from_message_id(int message_id){
-    return message_id;
+    return message_id*5+10;
 }
