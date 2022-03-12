@@ -1,0 +1,7 @@
+1. The separator bytes following the the 4 bytes of data was sent as one package
+2. Since it was stated that after start flag was recieved the full message will follow (asynchornously)
+and there was no indication anything besides the checksum bytes could be the wrong value, the value of 
+the separator bytes were not checked for correctness
+3. Since it was stated that the data is sent in little-endian order, the order of the bytes for each 
+payload (minus the separator byte) was reversed before being placed into the message for 
+"process_message" and calculating the correct checksum value.
