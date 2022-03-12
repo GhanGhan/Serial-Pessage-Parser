@@ -1,3 +1,5 @@
+#ifndef _messaging_h
+#define _messaging_h
 /**
 * Attempts to read up to count number of bytes from the serial
 * port into the buffer.
@@ -19,3 +21,5 @@ void process_message(char *buffer, unsigned int message_id);
 * (0xFE) and the checksum but does not include the start flag.
 */
 int get_message_size_from_message_id(int message_id);
+
+#endif
